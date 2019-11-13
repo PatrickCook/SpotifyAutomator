@@ -36,3 +36,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jwt'
 gem 'simple_command'
 gem 'rspotify', '~> 2.7.0'
+gem 'uglifier'
