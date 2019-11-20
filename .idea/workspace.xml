@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffa404ea-f88e-4d9d-bf4c-5cbf9599f265" name="Default Changelist" comment="base api with user authentication working">
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tasks/scheduler.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/scheduler.rake" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -340,7 +340,7 @@
       <workItem from="1573681717952" duration="4699000" />
       <workItem from="1573691184677" duration="282000" />
       <workItem from="1574277965097" duration="1405000" />
-      <workItem from="1574287076020" duration="1517000" />
+      <workItem from="1574287076020" duration="1751000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
