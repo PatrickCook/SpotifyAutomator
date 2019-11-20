@@ -15,21 +15,21 @@ class SpotifyController < ApplicationController
     @recently_played = @spotify_user.recently_played(limit: 50)
   end
 
-  def refresh_recently_played
-    after = fetch_after_timestamp
-    recently_played = @spotify_user.recently_played(limit: 50, after: after)
-    recently_played.each do |track|
-      artists = track.artists.map(&:name).join(", ")
-      @current_user.played_tracks.create(name: track.name, artists: artists, uri: track.uri, played_at: track.played_at)
-    end
+  def import_recently_played
+    SingleImportRecentlyPlayedWorker.perform_async(@current_user.id)
 
     respond_to do |format|
       format.html do
+        flash[:notice] = "Your spotify recently played tracks are being imported."
         redirect_to spotify_play_history_path
       end
 
       format.json do
-        render json: { action: "add_recently_played", status: "success", added_tracks: recently_played.count }
+        render json: {
+          action: "import_recently_played",
+          status: "pending",
+          message: "Your spotify recently played tracks are being imported"
+        }
       end
     end
   end
@@ -45,18 +45,5 @@ class SpotifyController < ApplicationController
 
   def generate_top_artists_playlist
 
-  end
-
-  private
-
-  def fetch_after_timestamp
-    max_timestamp = @current_user.played_tracks.maximum("played_at")
-    timestamp_to_milliseconds(max_timestamp)
-  end
-
-  def timestamp_to_milliseconds(timestamp)
-    return 0 unless timestamp
-
-    (timestamp.to_f * 1000).to_i
   end
 end

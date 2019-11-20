@@ -20,8 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_spotify_user
-    spotify_hash = @current_user.spotify_hash
-    @spotify_user = RSpotify::User.new(spotify_hash) if spotify_hash
+    @spotify_user = @current_user.spotify_user
 
     render json: { error: 'Could not load spotify user' }, status: 400 unless @spotify_user
   end
