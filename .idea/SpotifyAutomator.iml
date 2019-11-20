@@ -46,6 +46,7 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.5, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="domain_name (v0.5.20190701, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v0.17.0, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.11.2, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
@@ -94,6 +95,7 @@
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks-source (v5.2.0, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.5, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="uglifier (v4.2.0, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unf (v0.1.4, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unf_ext (v0.0.7.6, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.6.5, RVM: ruby-2.6.3 [spotify-automator]) [gem]" level="application" />
