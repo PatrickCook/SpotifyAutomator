@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffa404ea-f88e-4d9d-bf4c-5cbf9599f265" name="Default Changelist" comment="base api with user authentication working">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/workers/batch_import_recently_played_worker.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/workers/single_import_recently_played_worker.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SpotifyAutomator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SpotifyAutomator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/patrickcook.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/patrickcook.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/authentication_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/authentication_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/spotify/play_history.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/spotify/play_history.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/callback_terminator.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/callback_terminator.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/new_framework_defaults.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/new_framework_defaults.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/scheduler.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/scheduler.rake" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -355,7 +340,7 @@
       <workItem from="1573681717952" duration="4699000" />
       <workItem from="1573691184677" duration="282000" />
       <workItem from="1574277965097" duration="1405000" />
-      <workItem from="1574287076020" duration="1376000" />
+      <workItem from="1574287076020" duration="1517000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
