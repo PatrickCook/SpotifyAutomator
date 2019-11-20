@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  mount Sidekiq::Web => '/sidekiq'
 
   post 'authenticate', to: 'authentication#authenticate'
   get '/auth/spotify/callback', to: 'authentication#spotify'
