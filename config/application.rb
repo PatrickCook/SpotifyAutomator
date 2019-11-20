@@ -11,6 +11,6 @@ module SpotifyAutomator
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    RSpotify::authenticate("988ae7afb59749a9a5d359c27767bd78", "47c2a53a79474ff49eed9e52b192a216")
+    RSpotify::authenticate(Rails.application.credentials.spotify[:client_id], Rails.application.credentials.spotify[:client_secret])
   end
 end
