@@ -7,8 +7,16 @@ class SingleImportRecentlyPlayedWorker
 
     spotify_recently_played(user).each do |track|
       artists = track.artists.map(&:name).join(", ")
-      # image = track.album.images.last['url']
-      user.played_tracks.create(name: track.name, artists: artists, uri: track.uri, played_at: track.played_at)
+      image = track.album.images.last['url']
+      genres = track.artists.map(&:genres).flatten
+      user.played_tracks.create(
+        name: track.name,
+        artists: artists,
+        image: image,
+        genres: genres,
+        uri: track.uri,
+        played_at: track.played_at
+      )
     end
   end
 

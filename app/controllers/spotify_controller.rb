@@ -9,8 +9,8 @@ class SpotifyController < ApplicationController
   end
 
   def dashboard
-    @top_artists = @spotify_user.top_artists(limit: 30, time_range: "long_term")
-    @top_tracks = @spotify_user.top_tracks(limit: 30, time_range: "long_term")
+    @top_artists = @spotify_user.top_artists(limit: 30, time_range: "medium_term")
+    @top_tracks = @spotify_user.top_tracks(limit: 30, time_range: "medium_term")
     genres = @top_artists.map { |a| a.genres }.flatten.group_by(&:itself).transform_values(&:count).to_a
     @top_genres = genres.sort_by(&:last).reverse.map(&:first).slice(0,10)
     @recently_played = @spotify_user.recently_played(limit: 50).sort_by(&:played_at)
