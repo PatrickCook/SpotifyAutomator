@@ -1,4 +1,13 @@
 class SpotifyController < ApplicationController
+  before_action :require_login
+  before_action :require_spotify_user, except: :spotify_callback
+
+  def spotify_callback
+    current_user.update(spotify_hash: request.env['omniauth.auth'])
+
+    redirect_to spotify_dashboard_path
+  end
+
   def dashboard
     @top_artists = @spotify_user.top_artists(limit: 30, time_range: "long_term")
     @top_tracks = @spotify_user.top_tracks(limit: 30, time_range: "long_term")
@@ -8,7 +17,7 @@ class SpotifyController < ApplicationController
   end
 
   def play_history
-    @play_history = @current_user.played_tracks.sort_by(&:played_at).reverse
+    @play_history = current_user.played_tracks.sort_by(&:played_at).reverse
   end
 
   def recently_played
@@ -16,7 +25,7 @@ class SpotifyController < ApplicationController
   end
 
   def import_recently_played
-    SingleImportRecentlyPlayedWorker.perform_async(@current_user.id)
+    SingleImportRecentlyPlayedWorker.perform_async(current_user.id)
 
     respond_to do |format|
       format.html do

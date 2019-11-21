@@ -1,5 +1,7 @@
+<%= render 'partials/user_session' %>
+
 <h1>Play History</h1>
-<p><%= link_to "Dashboard", spotify_dashboard_path %></p>
+<p><%= link_to "Go back to Dashboard", spotify_dashboard_path %></p>
 <%= button_to 'Import Recently Played', spotify_import_recently_played_path, method: :get %>
 <table>
   <tr>

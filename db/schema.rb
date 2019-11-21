@@ -10,29 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191108194725) do
+ActiveRecord::Schema.define(version: 2019_11_08_194725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "played_tracks", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "uri"
-    t.string   "name"
-    t.string   "artists"
+  create_table "played_tracks", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "uri"
+    t.string "name"
+    t.string "artists"
     t.datetime "played_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_played_tracks_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_played_tracks_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "spotify_hash"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "spotify_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

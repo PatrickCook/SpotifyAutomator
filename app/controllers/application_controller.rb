@@ -1,27 +1,30 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  # before_action :authenticate_request
-  before_action :set_current_user
-  before_action :ensure_spotify_user
+  helper_method :current_user
+  helper_method :spotify_user
 
-  attr_reader :current_user
-
-  private
-
-  def set_current_user
-    @current_user = User.find_by(email: "pcook")
-    render json: { error: 'Could not load user' }, status: 400 unless @current_user
+  def current_user
+    @current_user ||= User.find_by_id(session[:user_id])
   end
 
-  def authenticate_request
-    @current_user = AuthorizeApiRequest.call(request.headers).result
-
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+  def spotify_user
+    @spotify_user ||= current_user&.spotify_user
   end
 
-  def ensure_spotify_user
-    @spotify_user = @current_user.spotify_user
+  def logged_in?
+    !!session[:user_id]
+  end
 
-    render json: { error: 'Could not load spotify user' }, status: 400 unless @spotify_user
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_path
+    end
+  end
+
+  def require_spotify_user
+    unless spotify_user
+      flash[:error] = "You must be authenticate with Spotify to access this section"
+      redirect_to root_path
+    end
   end
 end
