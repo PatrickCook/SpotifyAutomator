@@ -9,14 +9,19 @@ class SingleImportRecentlyPlayedWorker
       artists = track.artists.map(&:name).join(", ")
       album_uri = track.album.images.last['url']
       genres = track.artists.map(&:genres).flatten
-      user.played_tracks.create(
-        name: track.name,
-        artists: artists,
-        album_uri: album_uri,
-        genres: genres,
-        uri: track.uri,
-        played_at: track.played_at
-      )
+
+      begin
+        user.played_tracks.create(
+          name: track.name,
+          artists: artists,
+          album_uri: album_uri,
+          genres: genres,
+          uri: track.uri,
+          played_at: track.played_at
+        )
+      rescue ActiveRecord::RecordNotUnique => error
+        puts "Attempt to insert duplicate record was prevented."
+      end
     end
   end
 
