@@ -10,7 +10,7 @@ class AddUniquenessIndexToPlayedTracks < ActiveRecord::Migration[5.2]
           WHERE EXISTS (
             SELECT 1
             FROM played_tracks tmp
-            WHERE tmp.user_id = pt.user_id AND tmp.name = pt.name AND tmp.played_at = pt.played_at
+            WHERE tmp.user_id = pt.user_id AND tmp.uri = pt.uri AND tmp.played_at = pt.played_at
             LIMIT 1 OFFSET 1
           )
           GROUP BY pt.user_id, pt.name, pt.played_at

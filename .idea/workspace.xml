@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffa404ea-f88e-4d9d-bf4c-5cbf9599f265" name="Default Changelist" comment="base api with user authentication working">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20191203215925_add_uniqueness_index_to_played_tracks.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20191203215925_add_uniqueness_index_to_played_tracks.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -342,7 +342,7 @@
       <workItem from="1574277965097" duration="1405000" />
       <workItem from="1574287076020" duration="2902000" />
       <workItem from="1574291865129" duration="5876000" />
-      <workItem from="1575410405199" duration="804000" />
+      <workItem from="1575410405199" duration="1068000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
