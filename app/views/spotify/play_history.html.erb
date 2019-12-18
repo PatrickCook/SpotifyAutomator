@@ -1,7 +1,4 @@
-<%= render 'partials/user_session' %>
-
-<h1>Play History</h1>
-<p><%= link_to "Go back to Dashboard", spotify_dashboard_path %></p>
+<h2>Play History</h2>
 <%= button_to 'Import Recently Played', spotify_import_recently_played_path, method: :get %>
 <table>
   <tr>
@@ -14,8 +11,8 @@
     <tr>
       <td><%= index + 1 %></td>
       <td><%= t.name %></td>
-      <td><%= t.artists %></td>
-      <td><%= t.played_at.in_time_zone("Pacific Time (US & Canada)").to_datetime %></td>
+      <td><%= t.artists.slice(0,25) %></td>
+      <td><%= t.played_at.in_time_zone("Pacific Time (US & Canada)").to_datetime.strftime('%a, %-m/%e/%y %I:%M:%S %P') %></td>
     </tr>
   <% end %>
 </table>

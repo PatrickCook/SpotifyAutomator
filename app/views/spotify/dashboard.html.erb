@@ -1,14 +1,7 @@
-<%= render 'partials/user_session' %>
-
 <h1>Welcome back!</h1>
-<p><%= "Here are your music listening stats #{@spotify_user.display_name.split(' ').first}:" %></p>
-<p><%= link_to "Checkout your Spotify Play History", spotify_play_history_path %></p>
-<p><%= button_to "Generate Playlist based on last 3 months of your Spotify listening history)", spotify_generate_top_songs_playlist_path, method: :get, params: { time_range: 'short_term' } %></p>
-<p><%= button_to "Generate Playlist based on last 6 months of your Spotify listening history)", spotify_generate_top_songs_playlist_path, method: :get, params: { time_range: 'medium_term' } %></p>
-<p><%= button_to "Generate Playlist based on last 2 years of your Spotify listening history)", spotify_generate_top_songs_playlist_path, method: :get, params: { time_range: 'long_term' } %></p>
-<div>
+<div class="col s9">
   <div style="width: 33.33%; float: left">
-    <h2>Top Genres:</h2>
+    <h4>Top Genres:</h4>
     <ul>
       <% @top_genres.each do |genre|%>
         <li><%= genre %></li>
@@ -17,7 +10,7 @@
   </div>
 
   <div style="width: 33.33%; float: left">
-    <h2>Top Artists:</h2>
+    <h4>Top Artists:</h4>
     <ul>
       <% @top_artists.each do |artist|%>
         <li><%= artist.name %></li>
@@ -26,7 +19,7 @@
   </div>
 
   <div style="width: 33.33%; float: left">
-    <h2>Top Tracks:</h2>
+    <h4>Top Tracks:</h4>
     <ul>
       <% @top_tracks.each do |track|%>
         <li><%= track.name %></li>

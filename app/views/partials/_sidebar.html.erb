@@ -1,0 +1,7 @@
+<% if current_user && spotify_user%>
+  <div class="collection">
+    <%= link_to "Dashboard", spotify_dashboard_path, class: "collection-item"%>
+    <%= link_to "Spotify Play History", spotify_play_history_path, class: "collection-item"%>
+    <%= link_to "Generate Spotify Playlists", spotify_playlist_generation_path, class: "collection-item"%>
+  </div>
+<% end %>

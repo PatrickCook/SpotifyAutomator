@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffa404ea-f88e-4d9d-bf4c-5cbf9599f265" name="Default Changelist" comment="base api with user authentication working">
-      <change beforePath="$PROJECT_DIR$/db/migrate/20191203215925_add_uniqueness_index_to_played_tracks.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20191203215925_add_uniqueness_index_to_played_tracks.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/partials/_navbar.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/partials/_sidebar.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/spotify/playlist_generation.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/partials/_user_session.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/partials/_user_session.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/sessions/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spotify/dashboard.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/spotify/dashboard.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spotify/play_history.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/spotify/play_history.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spotify/recently_played.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/spotify/recently_played.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Ruby File" />
         <option value="Erb File" />
+        <option value="Ruby File" />
       </list>
     </option>
   </component>
@@ -342,7 +357,9 @@
       <workItem from="1574277965097" duration="1405000" />
       <workItem from="1574287076020" duration="2902000" />
       <workItem from="1574291865129" duration="5876000" />
-      <workItem from="1575410405199" duration="1068000" />
+      <workItem from="1575410405199" duration="1523000" />
+      <workItem from="1575481089986" duration="295000" />
+      <workItem from="1576623370149" duration="4137000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
@@ -399,7 +416,7 @@
     <SUITE FILE_PATH="coverage/rails_api_base@Development__rails_api_base.rcov" NAME="Development: rails-api-base Coverage Results" MODIFIED="1570854496086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rails-api-base" />
     <SUITE FILE_PATH="coverage/SpotifyAutomator@Production__SpotifyAutomator.rcov" NAME="Production: SpotifyAutomator Coverage Results" MODIFIED="1574287083172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
     <SUITE FILE_PATH="coverage/SpotifyAutomator@Sidekiq.rcov" NAME="Sidekiq Coverage Results" MODIFIED="1574287152220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
-    <SUITE FILE_PATH="coverage/SpotifyAutomator@Development__SpotifyAutomator.rcov" NAME="Development: SpotifyAutomator Coverage Results" MODIFIED="1574293698475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
+    <SUITE FILE_PATH="coverage/SpotifyAutomator@Development__SpotifyAutomator.rcov" NAME="Development: SpotifyAutomator Coverage Results" MODIFIED="1576623950161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
     <SUITE FILE_PATH="coverage/SpotifyAutomator@Development__rails_api_base.rcov" NAME="Development: rails-api-base Coverage Results" MODIFIED="1573069885006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rails-api-base" />
   </component>
 </project>

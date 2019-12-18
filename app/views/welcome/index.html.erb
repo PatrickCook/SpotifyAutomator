@@ -1,11 +1,8 @@
-
-<%= render 'partials/user_session' %>
-
 <h1>Welcome to Spotify Automator</h1>
 <p>To get started, create an account and sign into Spotify!</p>
 
 <% if current_user && !spotify_user %>
-  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+  <%= button_to 'Sign in with Spotify', '/auth/spotify' %>
 <% end %>
 
 <% if spotify_user %>

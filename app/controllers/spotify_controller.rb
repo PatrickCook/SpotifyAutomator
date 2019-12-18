@@ -24,6 +24,10 @@ class SpotifyController < ApplicationController
     @recently_played = @spotify_user.recently_played(limit: 50)
   end
 
+  def playlist_generation
+
+  end
+
   def import_recently_played
     SingleImportRecentlyPlayedWorker.perform_async(current_user.id)
 

@@ -1,0 +1,11 @@
+<ul>
+  <li class="collection-item">
+    <%= link_to "Generate Playlist based on last 3 months of your Spotify listening history", spotify_generate_top_songs_playlist_path, method: :get, params: { time_range: 'short_term' } %>
+  </li>
+  <li class="collection-item">
+    <%= link_to "Generate Playlist based on last 6 months of your Spotify listening history", spotify_generate_top_songs_playlist_path, method: :get, params: { time_range: 'medium_term' } %>
+  </li>
+  <li class="collection-item">
+    <%= link_to "Generate Playlist based on last 2 years of your Spotify listening history", spotify_generate_top_songs_playlist_path, method: :get, params: { time_range: 'long_term' } %>
+  </li>
+</ul>
