@@ -1,4 +1,6 @@
 class PlayedTrack < ApplicationRecord
   belongs_to :user
-  serialize :genres, Array
+  has_and_belongs_to_many :genres
+
+  serialize :old_genres, Array
 end

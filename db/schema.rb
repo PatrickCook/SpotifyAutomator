@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_215925) do
+ActiveRecord::Schema.define(version: 2019_12_18_225050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "genres", force: :cascade do |t|
+    t.text "genre"
+  end
+
+  create_table "genres_played_tracks", id: false, force: :cascade do |t|
+    t.bigint "genre_id", null: false
+    t.bigint "played_track_id", null: false
+    t.index ["genre_id"], name: "index_genres_played_tracks_on_genre_id"
+    t.index ["played_track_id"], name: "index_genres_played_tracks_on_played_track_id"
+  end
 
   create_table "played_tracks", id: :serial, force: :cascade do |t|
     t.integer "user_id"
@@ -23,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_215925) do
     t.datetime "played_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "genres"
+    t.string "old_genres"
     t.string "album_uri"
     t.index ["user_id", "uri", "played_at"], name: "index_played_tracks_on_user_id_and_uri_and_played_at", unique: true
     t.index ["user_id"], name: "index_played_tracks_on_user_id"

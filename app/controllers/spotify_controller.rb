@@ -14,6 +14,10 @@ class SpotifyController < ApplicationController
     genres = @top_artists.map { |a| a.genres }.flatten.group_by(&:itself).transform_values(&:count).to_a
     @top_genres = genres.sort_by(&:last).reverse.map(&:first).slice(0,10)
     @recently_played = @spotify_user.recently_played(limit: 50).sort_by(&:played_at)
+
+    # [ 'time_period', 'genre_1', genre_2, ...],
+    # [ 'January',       10,       4,   ...   ]
+
   end
 
   def play_history
@@ -58,5 +62,17 @@ class SpotifyController < ApplicationController
 
   def generate_top_artists_playlist
 
+  end
+
+  private
+
+  def genres
+    data = Genre.all.pluck(:genre, 0).to_h
+    PlayedTrack.all.each do |track|
+      track.genres.each do |genre|
+        data[genre.genre] += 1
+      end
+    end
+    data.to_a.sort {|a,b| b[1] <=> a[1]}
   end
 end
