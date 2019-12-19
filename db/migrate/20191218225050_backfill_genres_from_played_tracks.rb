@@ -7,8 +7,8 @@ class BackfillGenresFromPlayedTracks < ActiveRecord::Migration[5.2]
         PlayedTrack.where(uri: track.uri).each do |track|
           track.genres << genres
         end
-        sleep 4
       end
+      sleep 4
     end
   end
 
