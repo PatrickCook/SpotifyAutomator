@@ -7,7 +7,7 @@
   function drawListeningChart() {
     var data = JSON.parse('<%= @user_listening_data.to_json.html_safe -%>');
     data = google.visualization.arrayToDataTable(data);
-
+    console.log(data)
     var options = {
       title: 'Listening Trends',
       curveType: 'function',
@@ -26,7 +26,7 @@
   function drawGenresChart() {
     var data = JSON.parse('<%= @user_genres_data.to_json.html_safe -%>');
     data = google.visualization.arrayToDataTable(data);
-
+    console.log(data)
     var options = {
       title: 'Genre Trends',
       curveType: 'function',
