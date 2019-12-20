@@ -64,14 +64,30 @@ class SpotifyController < ApplicationController
 
   private
 
-  def user_listening_data(time_period='week')
+  def user_listening_data(time_period='month')
     @user_listening_data ||= ActiveRecord::Base.connection.execute(
-      "SELECT DATE_TRUNC('#{time_period}', played_at)::DATE, COUNT(*)
-       FROM played_tracks
-       GROUP BY DATE_TRUNC('#{time_period}', played_at)
-       ORDER BY DATE_TRUNC('#{time_period}', played_at);"
+      "SELECT total_plays.time_period,
+              total_plays.plays as \"total\",
+              new_plays.plays as \"new\",
+              total_plays.plays - new_plays.plays as \"repeat\"
+       FROM (
+        SELECT DATE_TRUNC('#{time_period}', played_at)::DATE as \"time_period\", COUNT(*) as \"plays\" FROM played_tracks
+        WHERE user_id = #{current_user.id}
+        GROUP BY DATE_TRUNC('#{time_period}', played_at)
+        ORDER BY DATE_TRUNC('#{time_period}', played_at)
+        ) total_plays
+      JOIN (
+        SELECT DATE_TRUNC('#{time_period}', pt.played_at)::DATE as \"time_period\", COUNT(*) as \"plays\" FROM played_tracks pt
+        JOIN (
+          SELECT uri, MIN(played_at) as \"first\" FROM played_tracks WHERE user_id = 1 GROUP BY uri
+        ) foo ON pt.uri = foo.uri AND pt.played_at = foo.first
+        WHERE pt.user_id = #{current_user.id}
+        GROUP BY DATE_TRUNC('#{time_period}', pt.played_at)
+        ORDER BY DATE_TRUNC('#{time_period}', pt.played_at)
+      ) new_plays
+      ON total_plays.time_period = new_plays.time_period;"
     ).values
-    @user_listening_data.unshift(%w(Week Plays))
+    @user_listening_data.unshift(['Week', 'Scrobbles', 'New Scrobbles', "Repeat Scrobbles"])
   end
 
   def user_genres_data(num_genres=5, time_period='week')
