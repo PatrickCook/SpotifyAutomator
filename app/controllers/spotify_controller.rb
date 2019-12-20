@@ -68,7 +68,8 @@ class SpotifyController < ApplicationController
     @user_listening_data ||= ActiveRecord::Base.connection.execute(
       "SELECT DATE_TRUNC('#{time_period}', played_at)::DATE, COUNT(*)
        FROM played_tracks
-       GROUP BY DATE_TRUNC('#{time_period}', played_at);"
+       GROUP BY DATE_TRUNC('#{time_period}', played_at)
+       ORDER BY DATE_TRUNC('#{time_period}', played_at);"
     ).values
     @user_listening_data.unshift(%w(Week Plays))
   end
