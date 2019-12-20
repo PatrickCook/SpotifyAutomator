@@ -13,6 +13,8 @@ class SpotifyController < ApplicationController
     genres = @top_artists.map { |a| a.genres }.flatten.group_by(&:itself).transform_values(&:count).to_a
     @top_genres = genres.sort_by(&:last).reverse.map(&:first).slice(0,10)
     @recently_played = @spotify_user.recently_played(limit: 50).sort_by(&:played_at)
+
+    user_listening_data
     user_genres_data
   end
 
@@ -62,10 +64,19 @@ class SpotifyController < ApplicationController
 
   private
 
+  def user_listening_data(time_period='week')
+    @user_listening_data ||= ActiveRecord::Base.connection.execute(
+      "SELECT DATE_TRUNC('#{time_period}', played_at)::DATE, COUNT(*)
+       FROM played_tracks
+       GROUP BY DATE_TRUNC('#{time_period}', played_at);"
+    ).values
+    @user_listening_data.unshift(%w(Week Plays))
+  end
+
   def user_genres_data(num_genres=5, time_period='week')
-    @genres_data = [users_top_genres.flatten.unshift(time_period)]
+    @user_genres_data = [users_top_genres(num_genres).flatten.unshift(time_period)]
     users_top_genres_data(num_genres, time_period).each_slice(num_genres) do |slice|
-      @genres_data += [[slice[0][0]] + slice.map{ |i| i[1] }]
+      @user_genres_data += [[slice[0][0]] + slice.map{ |i| i[1] }]
     end
   end
 
@@ -88,14 +99,14 @@ class SpotifyController < ApplicationController
     ).values
   end
 
-  def users_top_genres
+  def users_top_genres(num_genres)
     ActiveRecord::Base.connection.execute(
       "SELECT g.genre FROM played_tracks pt
 	     INNER JOIN genres_played_tracks gpt ON pt.id = gpt.played_track_id
 	     INNER JOIN genres g ON gpt.genre_id = g.id
        WHERE user_id = #{current_user.id}
        GROUP BY g.genre
-       ORDER BY COUNT(*) DESC LIMIT 5;"
+       ORDER BY COUNT(*) DESC LIMIT #{num_genres};"
     ).values
   end
 end

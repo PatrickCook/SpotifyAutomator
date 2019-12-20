@@ -2,10 +2,29 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawListeningChart);
 
-  function drawChart() {
-    var data = JSON.parse('<%= @genres_data.to_json.html_safe -%>');
+  function drawListeningChart() {
+    var data = JSON.parse('<%= @user_listening_data.to_json.html_safe -%>');
+    data = google.visualization.arrayToDataTable(data);
+
+    var options = {
+      title: 'Listening Trends',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('listening_chart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawGenresChart);
+
+  function drawGenresChart() {
+    var data = JSON.parse('<%= @user_genres_data.to_json.html_safe -%>');
     data = google.visualization.arrayToDataTable(data);
 
     var options = {
@@ -14,12 +33,13 @@
       legend: { position: 'bottom' }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    var chart = new google.visualization.LineChart(document.getElementById('genres_chart'));
 
     chart.draw(data, options);
   }
 </script>
-<div id="curve_chart" style="width: 900px; height: 500px"></div>
+<div id="listening_chart" style="width: 900px; height: 500px"></div>
+<div id="genres_chart" style="width: 900px; height: 500px"></div>
 <div class="col s9">
   <div style="width: 33.33%; float: left">
     <h4>Top Genres:</h4>
