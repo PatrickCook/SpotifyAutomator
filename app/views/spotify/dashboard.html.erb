@@ -21,6 +21,26 @@
 </script>
 
 <script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawDOWChart);
+
+  function drawDOWChart() {
+    var data = JSON.parse('<%= @user_dow_data.to_json.html_safe -%>');
+    data = google.visualization.arrayToDataTable(data);
+    console.log(data)
+    var options = {
+      title: 'Listening Trends',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('day_of_week_chart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
   google.charts.setOnLoadCallback(drawGenresChart);
 
   function drawGenresChart() {
@@ -39,6 +59,7 @@
   }
 </script>
 <div id="listening_chart" style="width: 900px; height: 500px"></div>
+<div id="day_of_week_chart" style="width: 900px; height: 500px"></div>
 <div id="genres_chart" style="width: 900px; height: 500px"></div>
 <div class="col s9">
   <div style="width: 33.33%; float: left">
