@@ -4,7 +4,6 @@ class SpotifyController < ApplicationController
 
   def spotify_callback
     current_user.update(spotify_hash: request.env['omniauth.auth'])
-
     redirect_to spotify_dashboard_path
   end
 
@@ -63,22 +62,40 @@ class SpotifyController < ApplicationController
 
   private
 
-  def user_genres_data
-    @user_genres_data = ActiveRecord::Base.connection.execute(
-      "SELECT DATE_TRUNC('week', played_at)::DATE, COUNT(*), g.genre FROM played_tracks pt
+  def user_genres_data(num_genres=5, time_period='week')
+    @genres_data = [users_top_genres.flatten.unshift(time_period)]
+    users_top_genres_data(num_genres, time_period).each_slice(num_genres) do |slice|
+      @genres_data += [[slice[0][0]] + slice.map{ |i| i[1] }]
+    end
+  end
+
+  def users_top_genres_data(num_genres, time_period)
+    ActiveRecord::Base.connection.execute(
+      "SELECT DATE_TRUNC('#{time_period}', played_at)::DATE, COUNT(*), g.genre FROM played_tracks pt
       INNER JOIN genres_played_tracks gpt ON pt.id = gpt.played_track_id
       INNER JOIN genres g ON gpt.genre_id = g.id
       WHERE user_id = #{current_user.id} AND g.genre IN (
 	      SELECT g.genre FROM played_tracks pt
 	      INNER JOIN genres_played_tracks gpt ON pt.id = gpt.played_track_id
 	      INNER JOIN genres g ON gpt.genre_id = g.id
-	      WHERE user_id = 1
+	      WHERE user_id = #{current_user.id}
 	      GROUP BY g.genre
         ORDER BY COUNT(*) desc
-	      LIMIT 5
+	      LIMIT #{num_genres}
       )
-      GROUP BY DATE_TRUNC('week', played_at), g.genre
-      ORDER BY DATE_TRUNC('week', played_at), COUNT(*) desc;"
+      GROUP BY DATE_TRUNC('#{time_period}', played_at), g.genre
+      ORDER BY DATE_TRUNC('#{time_period}', played_at), g.genre;"
+    ).values
+  end
+
+  def users_top_genres
+    ActiveRecord::Base.connection.execute(
+      "SELECT g.genre FROM played_tracks pt
+	     INNER JOIN genres_played_tracks gpt ON pt.id = gpt.played_track_id
+	     INNER JOIN genres g ON gpt.genre_id = g.id
+       WHERE user_id = #{current_user.id}
+       GROUP BY g.genre
+       ORDER BY COUNT(*) DESC LIMIT 5;"
     ).values
   end
 end
