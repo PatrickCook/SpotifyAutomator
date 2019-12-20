@@ -14,8 +14,8 @@ class SpotifyController < ApplicationController
     @top_genres = genres.sort_by(&:last).reverse.map(&:first).slice(0,10)
     @recently_played = @spotify_user.recently_played(limit: 50).sort_by(&:played_at)
 
-    user_listening_data
-    user_genres_data
+    user_listening_data(params[:time_period])
+    user_genres_data(params[:num_genres] || 5, params[:time_period])
   end
 
   def play_history

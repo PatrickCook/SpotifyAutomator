@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ffa404ea-f88e-4d9d-bf4c-5cbf9599f265" name="Default Changelist" comment="base api with user authentication working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/spotify/dashboard.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/spotify/dashboard.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -346,7 +346,7 @@
       <workItem from="1575410405199" duration="1523000" />
       <workItem from="1575481089986" duration="295000" />
       <workItem from="1576623370149" duration="4137000" />
-      <workItem from="1576716386827" duration="13826000" />
+      <workItem from="1576716386827" duration="14486000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
