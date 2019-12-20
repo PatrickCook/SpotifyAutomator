@@ -10,14 +10,14 @@ class SingleImportRecentlyPlayedWorker
       album_uri = track.album.images.last['url']
 
       begin
-        track = user.played_tracks.create(
+        new_track = user.played_tracks.create(
           name: track.name,
           artists: artists,
           album_uri: album_uri,
           uri: track.uri,
           played_at: track.played_at
         )
-        track.genres << fetch_genres_for_track(track)
+        new_track.genres << fetch_genres_for_track(track)
       rescue ActiveRecord::RecordNotUnique => error
         puts "Attempt to insert duplicate record was prevented."
       end
