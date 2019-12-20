@@ -136,21 +136,12 @@ class SpotifyController < ApplicationController
 
   def user_dow_data
     results = ActiveRecord::Base.connection.execute(
-      "SELECT
-        count(extract(dow from played_at) = 0 or null) as sunday,
-        count(extract(dow from played_at) = 1 or null) as monday,
-        count(extract(dow from played_at) = 2 or null) as tuesday,
-        count(extract(dow from played_at) = 3 or null) as wednesday,
-        count(extract(dow from played_at) = 4 or null) as thursday,
-        count(extract(dow from played_at) = 5 or null) as friday,
-        count(extract(dow from played_at) = 6 or null) as saturday
-      FROM played_tracks
-      WHERE user_id = #{current_user.id};"
+      "SELECT to_char(MIN(played_at), 'Day'), COUNT(*)
+       FROM played_tracks WHERE user_id = #{current_user.id}
+       GROUP BY date_part('dow', played_at)
+       ORDER BY date_part('dow', played_at);"
     ).values
 
-    @user_dow_data = [
-      ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      results[0]
-    ]
+    @user_dow_data = results.unshift(['Day of Week', 'Plays'])
   end
 end
