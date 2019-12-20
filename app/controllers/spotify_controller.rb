@@ -91,10 +91,16 @@ class SpotifyController < ApplicationController
   end
 
   def user_genres_data(num_genres=5, time_period='week')
-    @user_genres_data = [users_top_genres(num_genres).flatten.unshift(time_period)]
+    header = users_top_genres(num_genres).flatten.unshift(time_period)
+    @user_genres_data = [header]
     users_top_genres_data(num_genres, time_period).each_slice(num_genres) do |slice|
-      @user_genres_data += [[slice[0][0]] + slice.map{ |i| i[1] }]
+      normalized_data = header.slice(1,header.size-1).map do |genre|
+        matched_genre = slice.select {|g| g[2] == genre}
+        matched_genre.present? ? matched_genre[0][1] : 0
+      end
+      @user_genres_data += [[slice[0][0]] + normalized_data]
     end
+    @user_genres_data
   end
 
   def users_top_genres_data(num_genres, time_period)

@@ -4,7 +4,6 @@
     <list default="true" id="ffa404ea-f88e-4d9d-bf4c-5cbf9599f265" name="Default Changelist" comment="base api with user authentication working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/spotify_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/spotify/dashboard.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/spotify/dashboard.html.erb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -347,7 +346,7 @@
       <workItem from="1575410405199" duration="1523000" />
       <workItem from="1575481089986" duration="295000" />
       <workItem from="1576623370149" duration="4137000" />
-      <workItem from="1576716386827" duration="11879000" />
+      <workItem from="1576716386827" duration="13698000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
@@ -404,7 +403,7 @@
     <SUITE FILE_PATH="coverage/rails_api_base@Development__rails_api_base.rcov" NAME="Development: rails-api-base Coverage Results" MODIFIED="1570854496086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rails-api-base" />
     <SUITE FILE_PATH="coverage/SpotifyAutomator@Production__SpotifyAutomator.rcov" NAME="Production: SpotifyAutomator Coverage Results" MODIFIED="1574287083172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
     <SUITE FILE_PATH="coverage/SpotifyAutomator@Sidekiq.rcov" NAME="Sidekiq Coverage Results" MODIFIED="1574287152220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
-    <SUITE FILE_PATH="coverage/SpotifyAutomator@Development__SpotifyAutomator.rcov" NAME="Development: SpotifyAutomator Coverage Results" MODIFIED="1576870423683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
+    <SUITE FILE_PATH="coverage/SpotifyAutomator@Development__SpotifyAutomator.rcov" NAME="Development: SpotifyAutomator Coverage Results" MODIFIED="1576876584122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="SpotifyAutomator" />
     <SUITE FILE_PATH="coverage/SpotifyAutomator@Development__rails_api_base.rcov" NAME="Development: rails-api-base Coverage Results" MODIFIED="1573069885006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="rails-api-base" />
   </component>
 </project>
