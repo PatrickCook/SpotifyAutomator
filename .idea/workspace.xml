@@ -346,7 +346,8 @@
       <workItem from="1575410405199" duration="1523000" />
       <workItem from="1575481089986" duration="295000" />
       <workItem from="1576623370149" duration="4137000" />
-      <workItem from="1576716386827" duration="16672000" />
+      <workItem from="1576716386827" duration="16892000" />
+      <workItem from="1577747268016" duration="219000" />
     </task>
     <task id="LOCAL-00001" summary="base api with user authentication working">
       <created>1570855120452</created>
@@ -395,14 +396,6 @@
             <option name="block-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/spotify_controller.rb</url>
-          <line>144</line>
-          <properties a="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

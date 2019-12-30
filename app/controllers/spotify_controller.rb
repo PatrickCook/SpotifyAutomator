@@ -8,15 +8,15 @@ class SpotifyController < ApplicationController
   end
 
   def dashboard
-    @top_artists = @spotify_user.top_artists(limit: 30, time_range: "medium_term")
-    @top_tracks = @spotify_user.top_tracks(limit: 30, time_range: "medium_term")
+    @top_artists = @spotify_user.top_artists(limit: 30, time_range: 'medium_term')
+    @top_tracks = @spotify_user.top_tracks(limit: 30, time_range: 'medium_term')
     genres = @top_artists.map { |a| a.genres }.flatten.group_by(&:itself).transform_values(&:count).to_a
     @top_genres = genres.sort_by(&:last).reverse.map(&:first).slice(0,10)
     @recently_played = @spotify_user.recently_played(limit: 50).sort_by(&:played_at)
 
-    user_listening_data(params[:time_period])
+    user_listening_data(params[:time_period] || 'week')
     user_dow_data
-    user_genres_data(params[:num_genres] || 5, params[:time_period])
+    user_genres_data(params[:num_genres] || 5, params[:time_period] || 'week')
   end
 
   def play_history
@@ -51,8 +51,9 @@ class SpotifyController < ApplicationController
   end
 
   def generate_top_songs_playlist
-    top_tracks = @spotify_user.top_tracks(limit: 30, time_range: params["time_range"])
-    playlist = @spotify_user.create_playlist!("Spotify Automator: Top Tracks (#{params["time_range"]})")
+    time_range = params['time_range'] || 'medium_term'
+    top_tracks = @spotify_user.top_tracks(limit: 30, time_range: time_range)
+    playlist = @spotify_user.create_playlist!("Spotify Automator: Top Tracks (#{time_range})")
 
     playlist.add_tracks!(top_tracks)
     flash[:notice] = "Playlist successfully created"
@@ -65,7 +66,7 @@ class SpotifyController < ApplicationController
 
   private
 
-  def user_listening_data(time_period='month')
+  def user_listening_data(time_period)
     @user_listening_data ||= ActiveRecord::Base.connection.execute(
       "SELECT total_plays.time_period,
               total_plays.plays as \"total\",
@@ -91,7 +92,7 @@ class SpotifyController < ApplicationController
     @user_listening_data.unshift(['Week', 'Scrobbles', 'New Scrobbles', "Repeat Scrobbles"])
   end
 
-  def user_genres_data(num_genres=5, time_period='week')
+  def user_genres_data(num_genres=5, time_period)
     header = users_top_genres(num_genres).flatten.unshift(time_period)
     @user_genres_data = [header]
     users_top_genres_data(num_genres, time_period).each_slice(num_genres) do |slice|
