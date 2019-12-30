@@ -99,7 +99,7 @@ class SpotifyController < ApplicationController
       total_listened_tracks_for_time_period = slice.reduce { |sum, genre| sum + genre[0] }
       normalized_data = header.slice(1,header.size-1).map do |genre|
         matched_genre = slice.select {|g| g[2] == genre}
-        (matched_genre.present? ? matched_genre[0][1] : 0) / total_listened_tracks_for_time_period
+        (matched_genre.present? ? matched_genre[0][1] : 0) / total_listened_tracks_for_time_period.to_f
       end
       @user_genres_data += [[slice[0][0]] + normalized_data]
     end
